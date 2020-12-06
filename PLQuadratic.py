@@ -26,6 +26,8 @@ for index, triple in enumerate(triples):
     i, j, k = triple
     model.addConstr(x_vars[i] + x_vars[j] + x_vars[k] <= 2, "c_{}".format(index))
 
+#set time limit to 5 minutes
+model.setParam('TimeLimit', 5*60)
 # Optimize model
 model.optimize()
 print('Objective: {}'.format(model.objVal))
